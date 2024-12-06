@@ -6,13 +6,17 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      height: {
-        small: '8rem',   // For small cards
-        tall: '20rem',   // For tall cards
-        large: '12rem',  // For large cards
+      gridTemplateColumns: {
+        '12-custom': 'repeat(12, minmax(0, 1fr))',
       },
-      width: {
-        wide: '100%',    // For wide cards in the last row
+      height: {
+        'card-small': '200px', // Fixed height for small cards
+        'card-tall': '400px', // Fixed height for tall cards
+        'card-large': 'auto', // Keep large cards auto
+        'card-wide': '300px', // Subscribe card height
+      },
+      aspectRatio: {
+        'square': '1 / 1', // Ensure square aspect ratio for small cards
       },
     },
   },

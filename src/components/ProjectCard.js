@@ -2,16 +2,16 @@ import React from 'react';
 
 const ProjectCard = ({ title, description, isDarkMode, size = 'small', image }) => {
   const sizeClasses = {
-    small: 'h-48',
-    tall: 'h-96',
-    wide: 'col-span-2 h-48',
-    large: 'h-96'
+    small: 'w-card-small h-card-small', // Square size
+    tall: 'h-card-tall',               // Tall cards
+    wide: 'col-span-2 h-card-wide',    // Wide cards
+    large: 'h-card-tall',              // Large cards
   };
 
   return (
     <div
       className={`
-        ${sizeClasses[size]}
+        ${sizeClasses[size]} 
         ${isDarkMode
           ? 'bg-gray-800 border-gray-700 text-white'
           : 'bg-gray-100 border-gray-300 text-black'}
