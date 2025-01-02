@@ -1,27 +1,86 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
-.pnp.js
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# testing
+# Testing
 /coverage
+.nyc_output
 
-# production
+# Build outputs
+/.next/
+/out/
 /build
+/dist
+.turbo
 
-# misc
-.DS_Store
+# Environment and local files
+.env*
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+*.local
 
-# logs
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
-# package lock
+# Editor directories and files
+.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
+*.pem
+
+# Debug
+debug/
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Cache and temp files
+.cache
+.temp
+.tmp
+*.cache
+
+# Optional: Package manager locks (uncomment if needed)
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Storybook
+storybook-static/
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
