@@ -1,33 +1,24 @@
 "use client"
 
-import Link from 'next/link'
-import { ModeToggle } from './mode-toggle'
 import { cn } from '@/lib/utils'
-import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { ModeToggle } from './mode-toggle'
 
 export default function Header() {
   const pathname = usePathname()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen)
 
   return (
-    <header className="fixed top-0 left-0 right-0 flex items-center justify-center w-full z-50 p-6">
+    <header className="fixed top-0 left-0 right-0 flex items-center justify-center w-full z-50 p-2 sm:p-4 md:p-6">
       <motion.nav 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="px-6 py-3 rounded-full border bg-background/80 backdrop-blur-lg shadow-[0_0_1rem_rgba(0,0,0,0.1)] dark:shadow-[0_0_1rem_rgba(255,255,255,0.1)] relative"
+        className="px-3 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded-full border bg-background/80 backdrop-blur-lg shadow-[0_0_1rem_rgba(0,0,0,0.1)] dark:shadow-[0_0_1rem_rgba(255,255,255,0.1)]"
       >
-        <div className="flex items-center justify-between md:justify-center">
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMobileMenu}>
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
-          <div className={`flex flex-col md:flex-row items-center gap-8 ${mobileMenuOpen ? 'absolute top-full left-0 right-0 mt-2 p-4 bg-background/80 backdrop-blur-lg rounded-lg border' : 'hidden md:flex'}`}>
+        <div className="flex items-center justify-between">
+          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-6">
             {[
               { href: "/", label: "Home" },
               { href: "/about", label: "About" },
@@ -39,10 +30,9 @@ export default function Header() {
                 key={href}
                 href={href}
                 className={cn(
-                  "relative text-sm transition-colors hover:text-primary",
+                  "relative text-xs sm:text-sm md:text-base transition-colors hover:text-primary px-1 py-0.5",
                   pathname === href ? "text-primary font-medium" : "text-muted-foreground"
                 )}
-                onClick={() => setMobileMenuOpen(false)}
               >
                 {pathname === href && (
                   <motion.span
@@ -54,9 +44,9 @@ export default function Header() {
                 {label}
               </Link>
             ))}
-            <div className="md:flex items-center gap-3 pl-3 md:border-l">
-              <ModeToggle />
-            </div>
+          </div>
+          <div className="flex items-center gap-2 sm:gap-3 ml-4">
+            <ModeToggle />
           </div>
         </div>
       </motion.nav>

@@ -1,6 +1,9 @@
+"use client"
+
 import { Card, CardContent } from '@/components/ui/card'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const blogPosts = [
   {
@@ -31,27 +34,55 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <div className="container mx-auto px-4 pt-32 pb-16">
-      <h1 className="text-4xl font-bold text-center mb-12">Blog</h1>
+    <div className="container mx-auto px-4 md:px-6 lg:px-8 pt-32 pb-16">
+      <motion.h1 
+        className="text-4xl font-bold text-center mb-12"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Blog
+      </motion.h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2
+            }
+          }
+        }}
+        initial="hidden"
+        animate="show"
+      >
         {blogPosts.map((post) => (
-          <Card key={post.id} className="group hover:shadow-lg transition-all">
-            <Link href={`/blog/${post.id}`}>
-              <CardContent className="p-6">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h2 className="font-semibold text-lg mb-2">{post.title}</h2>
-                    <p className="text-sm text-muted-foreground mb-2">{post.description}</p>
-                    <p className="text-xs text-muted-foreground">{new Date(post.date).toLocaleDateString()}</p>
+          <motion.div
+            key={post.id}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0 }
+            }}
+          >
+            <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Link href={`/blog/${post.id}`}>
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h2 className="font-semibold text-lg mb-2">{post.title}</h2>
+                      <p className="text-sm text-muted-foreground mb-2">{post.description}</p>
+                      <p className="text-xs text-muted-foreground">{new Date(post.date).toLocaleDateString()}</p>
+                    </div>
+                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              </CardContent>
-            </Link>
-          </Card>
+                </CardContent>
+              </Link>
+            </Card>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   )
 }
