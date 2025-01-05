@@ -67,10 +67,10 @@ export default function Page() {
   transition={{ delay: 0.4 }}
 >
   {[
-    { icon: Github, href: "https://github.com", label: "GitHub" },
+    { icon: Github, href: "https://github.com/LitZeus", label: "GitHub" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+    { icon: Linkedin, href: "https://linkedin.com/in/tejasathalye", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:me.tejasathalye@gmail.com", label: "Email" },
   ].map(({ icon: Icon, href, label }, index) => (
     <motion.div
       key={href}
@@ -78,7 +78,7 @@ export default function Page() {
       whileTap={{ scale: 0.9 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.01 + index * 0.1 }}
+      transition={{ delay: 0.0001 + index * 0.2 }}
     >
       <Link
         href={href}

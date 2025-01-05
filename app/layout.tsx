@@ -1,12 +1,12 @@
+import { BackgroundAnimation } from '@/components/background-animation'
+import Footer from '@/components/footer'
+import Header from '@/components/header'
+import { Loader } from '@/components/loader'
+import { PageTransition } from '@/components/page-transition'
+import { ThemeProvider } from '@/components/theme-provider'
 import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
-import { ThemeProvider } from '@/components/theme-provider'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import { PageTransition } from '@/components/page-transition'
-import { Loader } from '@/components/loader'
 import { Suspense } from 'react'
-import { BackgroundAnimation } from '@/components/background-animation'
 
 const geist = Geist({
   subsets: ['latin'],
