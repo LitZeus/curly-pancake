@@ -1,84 +1,96 @@
-"use client"
+import { MagicCard } from "@/components/MagicCard"; // Assuming MagicCard is in this path
+import fs from "fs";
+import { compileMDX } from "next-mdx-remote/rsc";
+import Image from "next/image";
+import Link from "next/link";
+import path from "path";
 
-import { Card, CardContent } from '@/components/ui/card'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
-import { motion } from 'framer-motion'
+const components = {
+  Image: (props: any) => (
+    <Image
+      {...props}
+      width={800}
+      height={450}
+      alt={props.alt || ""}
+      className={`${props.className || ""} max-w-full h-auto`}
+    />
+  ),
+  img: (props: any) => (
+    <Image
+      {...props}
+      width={800}
+      height={450}
+      alt={props.alt || ""}
+      className={`${props.className || ""} max-w-full h-auto`}
+    />
+  ),
+};
 
-const projects = [
-  { id: 1, title: "Project 1", description: "A brief description of Project 1", slug: "project-1" },
-  { id: 2, title: "Project 2", description: "A brief description of Project 2", slug: "project-2" },
-  { id: 3, title: "Project 3", description: "A brief description of Project 3", slug: "project-3" },
-  { id: 4, title: "Project 4", description: "A brief description of Project 4", slug: "project-4" },
-]
+// Fetch all projects from the 'projects' directory
+export async function generateStaticParams() {
+  const projectFolderPath = path.join(process.cwd(), "projects");
+  const files = fs.readdirSync(projectFolderPath);
 
-export default function ProjectsPage() {
-  return (
-    <div className="container mx-auto px-4 md:px-6 lg:px-8 pt-32 pb-16">
-      <motion.h1 
-        className="text-4xl font-bold text-center mb-12"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        My Projects
-      </motion.h1>
-      
-      <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
-        variants={{
-          hidden: { opacity: 0 },
-          show: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.2
-            }
-          }
-        }}
-        initial="hidden"
-        animate="show"
-      >
-        {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0 }
-            }}
-          >
-            <Card
-              className="group overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-            >
-              <Link href={`/projects/${project.slug}`}>
-                <CardContent className="p-0">
-                  <div className="aspect-video relative overflow-hidden">
-                    <Image
-                      src={`/placeholder.svg?text=${project.title}`}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform group-hover:scale-105 duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <div className="flex justify-between items-end">
-                        <div>
-                          <h3 className="font-semibold text-lg mb-1">{project.title}</h3>
-                          <p className="text-sm text-muted-foreground">
-                            {project.description}
-                          </p>
-                        </div>
-                        <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Link>
-            </Card>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
-  )
+  // Ensure we only consider `.mdx` files
+  return files.filter((filename) => filename.endsWith(".mdx"));
 }
 
+// Get the metadata for the project
+export async function generateMetadata() {
+  return {
+    title: "Projects",
+    description: "Browse through the projects",
+  };
+}
+
+// Display all projects
+export default async function ProjectsPage() {
+  const projectFolderPath = path.join(process.cwd(), "projects");
+  const files = fs.readdirSync(projectFolderPath);
+
+  // Filter to get only `.mdx` files
+  const projectFiles = files.filter((filename) => filename.endsWith(".mdx"));
+
+  // Read each project and compile it
+  const projects = await Promise.all(
+    projectFiles.map(async (filename) => {
+      const filePath = path.join(projectFolderPath, filename);
+      const markdownFile = fs.readFileSync(filePath, "utf-8");
+
+      const { content, frontmatter } = await compileMDX<{ title: string; date: string; description: string }>({
+        source: markdownFile,
+        options: { parseFrontmatter: true },
+      });
+
+      return {
+        title: frontmatter.title,
+        date: frontmatter.date,
+        description: frontmatter.description,
+        content,
+        filename: filename.replace(".mdx", ""),
+      };
+    })
+  );
+
+  // Render the list of projects as cards
+  return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+      <h1 className="text-4xl font-semibold text-center mb-8">Projects</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <Link key={project.filename} href={`/projects/${project.filename}`} passHref>
+            <MagicCard className="group hover:scale-105 transition-all bg-white shadow-lg rounded-xl p-6">
+              <div>
+                <h2 className="text-2xl font-semibold">{project.title}</h2>
+                <p className="text-muted-foreground text-sm mt-1">
+                  Published on: {new Date(project.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                </p>
+                <p className="mt-2 text-base text-gray-700">{project.description}</p>
+              </div>
+            </MagicCard>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}

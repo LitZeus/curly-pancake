@@ -1,45 +1,31 @@
 ---
-title: "Project 1: Innovative Web Application"
+title: "Detection of Varicose Veins Using YOLO"
 date: "2023-04-15"
+description: "An AI-powered system for early diagnosis and continuous monitoring of varicose veins using YOLO deep learning algorithm."
 ---
 
-# Project 1: Innovative Web Application
 
-## Overview
-
-This project is an innovative web application that leverages cutting-edge technologies to solve real-world problems. It demonstrates my skills in front-end development, back-end integration, and user experience design.
+This project focuses on developing an AI-based system for detecting varicose veins using the YOLO deep learning model. The system enables early diagnosis and continuous monitoring, particularly targeting underserved areas such as rural India.
 
 ## Key Features
 
-- Responsive design for seamless use across devices
-- Real-time data synchronization
-- Advanced user authentication and authorization
-- Integration with external APIs for enhanced functionality
+- Automated image processing for detecting varicose veins.
+- YOLO-based deep learning model trained on a dataset of 300 labeled images.
+- Web application built with TypeScript, React, and Tailwind CSS.
+- Cloud storage and authentication powered by Supabase.
+- Supports live image capture and upload for analysis.
 
-## Technologies Used
+## System Architecture
 
-- React.js
-- Next.js
-- Node.js
-- PostgreSQL
-- GraphQL
-- Tailwind CSS
+The architecture consists of a client-side application for capturing and uploading images, a backend server for processing, and a cloud-hosted YOLO model for inference.
 
-## Challenges and Solutions
+![System Architecture](/projects/architecture-diagram.png)
 
-One of the main challenges in this project was implementing real-time data synchronization across multiple clients. To solve this, I utilized WebSockets and implemented a custom state management solution that efficiently handles data updates and conflicts.
+## Workflow
 
-## Results
-
-The application has been well-received by users, with a 95% satisfaction rate and a significant increase in user engagement compared to previous solutions.
-
-## Future Improvements
-
-- Implement machine learning algorithms for personalized user experiences
-- Expand the application to support multiple languages
-- Develop a mobile app version for iOS and Android
-
-## Conclusion
-
-This project showcases my ability to create complex, scalable web applications that provide real value to users. It demonstrates my proficiency in modern web technologies and my commitment to creating high-quality, user-centric solutions.
+1. User logs into the system.
+2. Uploads or captures an image for analysis.
+3. Image is processed by the YOLO-based model.
+4. Results are stored in the cloud database.
+5. User views detection results and history.
 
