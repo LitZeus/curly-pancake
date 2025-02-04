@@ -38,10 +38,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Next.js site
-        run: pnpm next build  # Build the site with Next.js
-
-      - name: Export Next.js site
-        run: pnpm next export  # Static export command, based on your next.config.js settings
+        run: pnpm next build  # Build the site with Next.js (automatically handles static export)
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
