@@ -1,0 +1,45 @@
+---
+title: "TabIt: Web Extension for Tab Management"
+date: "2025-02-04"
+description: "A browser extension to save, organize, and manage open tabs into named groups for better productivity."
+---
+
+TabIt is a **browser extension** designed to help users **save and organize open tabs** into named groups, making tab management **efficient and clutter-free**. Users can save individual tabs or entire sessions, **open saved groups**, and delete them when no longer needed.
+
+## Key Features
+
+- **Save Current Tab** – Quickly store the active tab in a named group.
+- **Save All Tabs** – Save all open tabs in the current window.
+- **View Saved Groups** – Access stored tab groups and their contents.
+- **Open Tabs in Bulk** – Instantly reopen all tabs in a saved group.
+- **Delete Groups** – Remove unnecessary tab groups with ease.
+- **Responsive UI** – Optimized for various screen sizes for a smooth user experience.
+
+## System Architecture
+
+The extension consists of **popup-based controls** with modular JavaScript scripts handling tab management, storage, and user interactions.
+
+![System Architecture](/projects/tabit-architecture.png)
+
+## Technologies Used
+
+- **JavaScript (Vanilla JS & Modular Scripts)** – Handles core functionalities.
+- **Chrome Extensions API** – Enables tab storage and management.
+- **IndexedDB / Chrome Storage** – Stores saved tab groups.
+- **HTML & CSS** – Provides a clean and responsive user interface.
+
+## Code Structure
+
+- **popup.js** – Manages the extension's main logic and UI interactions.
+- **components/** – Contains modular scripts:
+  - `saveTabs.js` – Handles saving individual or multiple tabs.
+  - `loadGroups.js` – Loads and displays saved groups.
+  - `deleteGroup.js` – Manages group deletion.
+- **styles.css** – Custom styles for an intuitive user experience.
+
+## UI Enhancements
+
+- **Custom Fonts** – Uses **Libre Baskerville** and **Nunito** from Google Fonts.
+- **Icon Design** – Unique **TabIt icon** for easy identification.
+
+TabIt simplifies **tab management** by making it **organized, accessible, and user-friendly**, improving productivity for users who frequently work with multiple browser tabs. 🚀

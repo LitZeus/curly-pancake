@@ -1,0 +1,42 @@
+---
+title: "VidForensicsTool: AI-Based Video Forensic Analysis"
+date: "2025-02-04"
+description: "A digital forensic tool for detecting video tampering, deepfakes, and verifying authenticity using metadata analysis and frame inspection."
+---
+
+The **VidForensicsTool** is a **video forensic analysis system** designed to **verify the authenticity and integrity of digital videos**. It is essential for **law enforcement, journalism, and forensic experts** who need to ensure video evidence is **genuine and unaltered**.
+
+## Key Features
+
+- **User-Friendly Web Interface** – Built with **Streamlit** for an intuitive experience.
+- **Metadata Extraction** – Retrieves resolution, codec, frame count, duration, and geolocation (if available).
+- **Integrity Verification (MD5 Hashing)** – Generates a unique fingerprint for comparing video integrity.
+- **Frame-by-Frame Analysis** – Detects tampering like **splicing, insertion, and pixel anomalies**.
+- **Deepfake Detection** – Uses AI-based techniques to identify potential **video manipulations**.
+- **Watermark Authentication** – Verifies embedded watermarks to **authenticate video ownership**.
+- **Comprehensive Forensic Report** – Generates a detailed **JSON report** containing metadata, hash values, and analysis findings.
+
+## System Architecture
+
+The system follows a **modular pipeline** that **processes, analyzes, and validates videos**, ensuring forensic-grade reliability.
+
+![System Architecture](/projects/vidforensics-architecture.png)
+
+## Technologies Used
+
+- **Python** – Core programming language.
+- **OpenCV & FFmpeg** – For **video processing** and frame analysis.
+- **Hashlib (MD5)** – Ensures **video integrity verification**.
+- **Streamlit** – Provides a **web-based forensic interface**.
+- **JSON Reports** – Stores and exports **detailed forensic findings**.
+
+## Workflow
+
+1. **Upload Video** – Supports **MP4, AVI, MOV** (up to **200MB**).
+2. **Extract Metadata** – Retrieves codec, resolution, frame count, and geolocation.
+3. **Integrity Check** – Compares **MD5 hashes** to detect tampering.
+4. **Deepfake Detection** – AI-based scan for **video manipulations**.
+5. **Frame Analysis** – Detects **splicing, pixel anomalies, and inserted frames**.
+6. **Generate Report** – Outputs findings in a **structured JSON forensic report**.
+
+VidForensicsTool is a **powerful AI-driven tool** ensuring video authenticity and **helping professionals validate evidence with forensic precision**. 🎥🔍

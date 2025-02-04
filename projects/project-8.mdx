@@ -1,0 +1,38 @@
+---
+title: "TextToTalk: PDF to MP3 Converter"
+date: "2025-02-04"
+description: "A web application that converts PDF text content into MP3 audio using text-to-speech technology."
+---
+
+**TextToTalk** is a **Streamlit-based web application** that allows users to **convert text from PDFs into MP3 audio files**. It leverages **pdfminer.six** for text extraction and **gTTS (Google Text-to-Speech)** for generating high-quality speech output.
+
+## Key Features
+
+- **PDF Upload** – Drag-and-drop or select a file manually.
+- **Language Selection** – Choose from multiple languages for **text-to-speech conversion**.
+- **Instant Audio Generation** – Convert **PDF text to an MP3 file** in seconds.
+- **Integrated Audio Player** – Listen to the generated MP3 directly within the app.
+- **Download Option** – Save the generated **MP3 file** for offline use.
+
+## How It Works
+
+1. **Upload a PDF** – The system extracts text content from the document.
+2. **Select Language** – Choose the desired language for speech synthesis.
+3. **Convert to Speech** – The extracted text is converted into **natural-sounding audio**.
+4. **Listen & Download** – Play the audio file directly or **download it as an MP3**.
+
+## Technology Stack
+
+- **Programming Language** – Python
+- **Web Framework** – Streamlit
+- **Text Extraction** – pdfminer.six
+- **Text-to-Speech (TTS)** – gTTS (Google Text-to-Speech)
+
+## Core Components
+
+- **`ExtText.py`** – Handles **PDF text extraction** using pdfminer.six.
+- **`TTS.py`** – Converts extracted text into speech using gTTS.
+- **`Pipeline.py`** – Combines text extraction and text-to-speech conversion.
+- **`app.py`** – The **Streamlit frontend**, providing an interactive interface.
+
+**TextToTalk** is a powerful yet simple tool designed for users who need **audio versions of their PDF documents**. 🎧📄

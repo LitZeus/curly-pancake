@@ -1,0 +1,37 @@
+---
+title: "SwipeHire: AI-Powered Job & Internship Matching App"
+date: "2025-02-04"
+description: "An AI-driven swipe-based platform connecting job seekers, interns, and recruiters for efficient matchmaking using deep learning and recommendation models."
+---
+
+SwipeHire is an AI-powered job and internship matchmaking platform that revolutionizes hiring through a swipe-based interface. The system leverages machine learning to analyze resumes, job descriptions, and engagement patterns, providing highly personalized recommendations for recruits and recruiters.
+
+## Key Features
+
+- **Bidirectional Swiping** – Mutual interest-based matching between candidates and recruiters.
+- **AI-Powered Resume Analysis** – Uses **BERT-based NLP models** to extract key skills, experiences, and preferences.
+- **Engagement-Based Ranking** – ML models analyze swipe patterns and interaction time to refine suggestions.
+- **Collaborative Filtering** – AI-driven recommendations powered by **Neural Collaborative Filtering (NCF)** to suggest the best job or candidate match.
+- **Automated Notifications** – Keeps users informed about new matches and application updates.
+
+## System Architecture
+
+The platform integrates a **Next.js** frontend, a **Supabase** backend for authentication and storage, and **machine learning models deployed via an API** for matchmaking intelligence.
+
+![System Architecture](/projects/job-matching-architecture.png)
+
+## Workflow
+
+1. **User Sign Up/Login** – Candidates and recruiters create accounts and log in.
+2. **Profile Setup** – Users update resumes, tags, and preferences.
+3. **Swiping Mechanism** – AI models analyze patterns to refine recommendations.
+4. **Matchmaking & Suggestions** – The system identifies the best candidates/jobs using **Collaborative Filtering and BERT embeddings**.
+5. **Notifications & Updates** – Users receive real-time updates on matches and recruiter interactions.
+
+## AI Models Used
+
+- **BERT (Bidirectional Encoder Representations from Transformers)** – Extracts meaningful insights from resumes and job descriptions.
+- **Neural Collaborative Filtering (NCF)** – Enhances recommendations based on mutual engagement.
+- **Deep Factorization Machines (DeepFM)** – Improves ranking for job listings and candidate profiles.
+
+SwipeHire streamlines the job-hunting and hiring process, making it more engaging and efficient for both recruits and recruiters.
