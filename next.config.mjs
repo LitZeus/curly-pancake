@@ -2,7 +2,7 @@ let userConfig = undefined;
 try {
   userConfig = await import("./v0-user-next.config");
 } catch (e) {
-  // ignore error
+  // ignore error if the user config does not exist
 }
 
 /** @type {import('next').NextConfig} */
@@ -24,9 +24,20 @@ const nextConfig = {
   output: "export", // Required for static export
   basePath: "/curly-pancake", // Adjust if deploying under a subpath
   assetPrefix: "/curly-pancake/",
-  
+
+  // Optionally, specify redirects, headers, rewrites, etc.
+  redirects: async () => {
+    return [
+      {
+        source: '/old-path',
+        destination: '/new-path',
+        permanent: true,
+      },
+    ];
+  },
 };
 
+// Merge with user config if it exists
 mergeConfig(nextConfig, userConfig);
 
 function mergeConfig(nextConfig, userConfig) {
