@@ -69,11 +69,6 @@ next-env.d.ts
 .tmp
 *.cache
 
-# Optional: Package manager locks (uncomment if needed)
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
 # Storybook
 storybook-static/
 
