@@ -21,10 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install PNPM
-        run: npm install -g pnpm
-
-      - name: Setup Node.js
+      - name: Setup Node.js with PNPM
         uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -36,7 +33,7 @@ jobs:
       - name: Build and Export Next.js site
         run: |
           pnpm next build
-          pnpm next export
+          NEXT_IGNORE_MISSING_FILES=true pnpm next export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
