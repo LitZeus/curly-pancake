@@ -27,10 +27,7 @@ jobs:
           node-version: "20"
           cache: "pnpm"
 
-      - name: Install pnpm manually (fix missing executable issue)
-        run: npm install -g pnpm
-
-      - name: Ensure pnpm is available
+      - name: Enable and Prepare Corepack for pnpm
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
