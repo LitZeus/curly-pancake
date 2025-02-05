@@ -52,10 +52,10 @@ export default function Page() {
               transition={{ delay: 0.4 }}
             >
               {[
-                { icon: Github, href: "https://github.com", label: "GitHub" },
+                { icon: Github, href: "https://github.com/LitZeus", label: "GitHub" },
                 { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-                { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/tejasathalye", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:me.tejasathalye@gmail.com", label: "Email" },
               ].map(({ icon: Icon, href, label }, index) => (
                 <motion.div
                   key={href}
