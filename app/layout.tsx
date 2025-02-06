@@ -14,8 +14,8 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: 'Creative Portfolio',
-  description: 'A vibrant and engaging portfolio',
+  title: 'Tejas\'s Portfolio',
+  description: 'Final Year Computer Engineering Undergraduate Student',
 }
 
 export default function RootLayout({
@@ -54,3 +54,4 @@ export default function RootLayout({
 
 
 import './globals.css'
+

@@ -1,4 +1,4 @@
-import { MagicCard } from "@/components/MagicCard"; // Assuming MagicCard is in this path
+import { MagicCard } from "@/components/MagicCard";
 import fs from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Image from "next/image";
