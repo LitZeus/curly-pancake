@@ -8,10 +8,8 @@ export async function GET() {
     const projectFolderPath = path.join(process.cwd(), "projects");
     const files = fs.readdirSync(projectFolderPath);
     
-    // Filter to get only .mdx files
     const projectFiles = files.filter((filename) => filename.endsWith(".mdx"));
 
-    // Read each project and compile it
     const projects = await Promise.all(
       projectFiles.map(async (filename) => {
         const filePath = path.join(projectFolderPath, filename);
