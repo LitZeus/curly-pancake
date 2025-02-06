@@ -1,3 +1,6 @@
+export const dynamic = 'force-static';
+export const revalidate = 60;  // Optional: define your revalidation time
+
 import fs from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { NextResponse } from "next/server";
