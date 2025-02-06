@@ -6,6 +6,8 @@ try {
 }
 
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -22,15 +24,19 @@ const nextConfig = {
     parallelServerCompiles: true,
   },
   output: "export", // Required for static export
-  basePath: "/curly-pancake", // Adjust if deploying under a subpath
-  assetPrefix: "/curly-pancake/",
+
+  // Only set basePath & assetPrefix in production (GitHub Pages)
+  ...(isProd && {
+    basePath: "/curly-pancake",
+    assetPrefix: "/curly-pancake/",
+  }),
 
   // Optionally, specify redirects, headers, rewrites, etc.
   redirects: async () => {
     return [
       {
-        source: '/old-path',
-        destination: '/new-path',
+        source: "/old-path",
+        destination: "/new-path",
         permanent: true,
       },
     ];
