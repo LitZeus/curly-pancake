@@ -1,4 +1,3 @@
-// app/api/projects/route.ts
 import fs from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { NextResponse } from "next/server";

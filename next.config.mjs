@@ -23,7 +23,7 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-  output: "export", // Required for static export
+  //output: "export", // Required for static export
 
   // Only set basePath & assetPrefix in production (GitHub Pages)
   ...(isProd && {

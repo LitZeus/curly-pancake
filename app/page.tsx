@@ -34,6 +34,10 @@ async function getProjects() {
           options: { parseFrontmatter: true },
         });
 
+        if (!frontmatter) {
+          console.error(`Missing frontmatter in file: ${filename}`);
+        }
+
         return {
           title: frontmatter.title,
           date: frontmatter.date,
@@ -43,9 +47,8 @@ async function getProjects() {
       })
     );
 
-    return projects
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 4);
+    // Return the first 4 projects as they appear in the folder
+    return projects.slice(0, 4);
   } catch (error) {
     console.error('Error reading projects:', error);
     return [];
