@@ -30,17 +30,6 @@ const nextConfig = {
     basePath: "/curly-pancake",
     assetPrefix: "/curly-pancake/",
   }),
-
-  // Optionally, specify redirects, headers, rewrites, etc.
-  redirects: async () => {
-    return [
-      {
-        source: "/old-path",
-        destination: "/new-path",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 // Merge with user config if it exists
