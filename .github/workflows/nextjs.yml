@@ -37,8 +37,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Next.js site
-        run: pnpm next build  # Build the site with Next.js (automatically handles static export)
+      - name: Build and export Next.js site
+        run: pnpm next build && pnpm next export  # Build and export the site
+
+      - name: List out directory contents
+        run: ls -alh ./out  # Check if the out directory is created
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
